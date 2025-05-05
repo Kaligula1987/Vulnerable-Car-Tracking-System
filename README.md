@@ -63,18 +63,6 @@ Try other payloads to explore LFI or extend it for XSS.
 
 
 car-tracking-lab/
-│
-├── static/
-│   └── style.css          # Styling for the HTML
-│
-├── templates/
-│   └── index.html         # Frontend UI
-│   └── map.html           # (Optional) Map simulation
-│
-├── cars.json              # Car data file
-├── app.py                 # Main Flask app
-├── requirements.txt       # Dependencies
-└── README.md              # You're here!
 
 
 
