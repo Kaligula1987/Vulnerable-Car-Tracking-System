@@ -1,0 +1,12 @@
+[
+    {"id": 1, "name": "Car A", "location": "40.7128° N, 74.0060° W"},
+    {"id": 2, "name": "Car B", "location": "34.0522° N, 118.2437° W"},
+    {"id": 3, "name": "Car C", "location": "51.5074° N, 0.1278° W"},
+    {"id": 4, "name": "Car D", "location": "48.8566° N, 2.3522° E"},
+    {"id": 5, "name": "Car E", "location": "40.7306° N, 73.9352° W"},
+    {"id": 6, "name": "Car F", "location": "37.7749° N, 122.4194° W"},
+    {"id": 7, "name": "Car G", "location": "52.3676° N, 4.9041° E"},
+    {"id": 8, "name": "Car H", "location": "34.0522° N, 118.2437° W"},
+    {"id": 9, "name": "Car I", "location": "40.7306° N, 73.9352° W"},
+    {"id": 10, "name": "Car J", "location": "51.5074° N, 0.1278° W"}
+]

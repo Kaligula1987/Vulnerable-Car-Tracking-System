@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Tracker Visual</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .map {
+            position: relative;
+            background-color: #222;
+            background-image: radial-gradient(#333 1px, transparent 1px);
+            background-size: 50px 50px;
+            width: 100vw;
+            height: 80vh;
+            overflow: hidden;
+            border-top: 2px solid #444;
+        }
+
+        .car {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: lime;
+            border-radius: 50%;
+            border: 2px solid #0f0;
+            box-shadow: 0 0 5px #0f0;
+        }
+
+        .label {
+            position: absolute;
+            top: -18px;
+            left: 15px;
+            color: #0f0;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to the Car Tracking System</h1>
+        <p>Tracking your fleet visually on a simulated map.</p>
+    </div>
+    <div class="map" id="map"></div>
+
+    <script>
+        const carContainer = document.getElementById('map');
+        const carCount = 10;
+        const cars = [];
+
+        // Generate initial car positions
+        for (let i = 0; i < carCount; i++) {
+            const carEl = document.createElement('div');
+            carEl.className = 'car';
+
+            const label = document.createElement('div');
+            label.className = 'label';
+            label.textContent = 'Car ' + String.fromCharCode(65 + i);
+            carEl.appendChild(label);
+
+            const x = Math.random() * (window.innerWidth - 20);
+            const y = Math.random() * (window.innerHeight * 0.8 - 20);
+
+            carEl.style.left = x + 'px';
+            carEl.style.top = y + 'px';
+
+            carContainer.appendChild(carEl);
+            cars.push({ el: carEl, x, y });
+        }
+
+        // Simulate movement
+        setInterval(() => {
+            cars.forEach(car => {
+                car.x += (Math.random() - 0.5) * 10;
+                car.y += (Math.random() - 0.5) * 10;
+
+                // Boundaries
+                car.x = Math.max(0, Math.min(window.innerWidth - 20, car.x));
+                car.y = Math.max(0, Math.min(window.innerHeight * 0.8 - 20, car.y));
+
+                car.el.style.left = car.x + 'px';
+                car.el.style.top = car.y + 'px';
+            });
+        }, 1000);
+    </script>
+</body>
+</html>

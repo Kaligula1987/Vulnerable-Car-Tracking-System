@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Tracking System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Car Tracking System</h1>
+        <p>Tracking the location of your fleet of cars in real-time.</p>
+        <div id="carList"></div>
+    </div>
+
+    <script>
+        async function fetchCars() {
+            try {
+                const response = await fetch('/api/cars');
+                const result = await response.json();
+
+                if (result.data) {
+                    const cars = JSON.parse(result.data);
+                    let html = "<ul>";
+                    cars.forEach(car => {
+                        html += `<li><strong>${car.name}</strong>: ${car.location}</li>`;
+                    });
+                    html += "</ul>";
+                    document.getElementById("carList").innerHTML = html;
+                } else {
+                    document.getElementById("carList").innerHTML = "<p>Error fetching data: " + result.error + "</p>";
+                }
+            } catch (error) {
+                document.getElementById("carList").innerHTML = "<p>Error fetching cars data.</p>";
+            }
+        }
+
+        fetchCars();
+    </script>
+</body>
+</html>
